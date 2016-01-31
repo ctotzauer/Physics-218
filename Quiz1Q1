@@ -1,0 +1,27 @@
+#Physics 218, Quiz 1
+#Written 01/29/16
+#By Chris Totzauer
+
+#Question 1 asks us to find the density of a cylinder given
+#the following dimension measurements.
+
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+h = 22.65 #mm
+r = 4.30 #mm
+m = 228.6 #g
+dh = 0.05 #mm
+dr = 0.05 #mm
+dm = 0.1 #g
+V = 3.1415*(r**2)*h
+
+def density(h,r,m):
+    dens = m/(3.1415*(r**2)*h)
+    return round(dens,4)
+
+#Find uncertainty in volume and density calculations
+dV = np.sqrt(((dr/r)**2)+((dr/r)**2)+((dh/h)**2))
+ddens = round(np.sqrt(((dV/V)**2)+((dm/m))),4)
+
+print "The density of the cylinder is", density(h,r,m),"+/-",ddens,"g/mm^3"
